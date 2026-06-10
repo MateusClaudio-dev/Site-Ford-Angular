@@ -1,3 +1,9 @@
+
+<header class="cabecalho-dashboard">
+    <div><img src="/img/icon-menu.svg" alt="Ford Logo" class="icon-menu" (click)="openMenu()"></div>
+    <div><h1 class="dashboard-title">Dashboard FORD</h1></div>
+    <button routerLink="/Login" class="btn-logout" (click)="executarLogout()"><img src="/img/icon-logout.svg" alt="Finalizar sessão"></button>
+</header>
 <div class="side-bar">
       <div class="images">
           <img src="/img/ford.png" alt="">
@@ -6,12 +12,6 @@
       <p routerLink="/Home" class="back-home">Home</p>
       <p routerLink="/Dashboard">Dashboard</p>
     </div>
-<header class="cabecalho-dashboard">
-    <div><img src="/img/icon-menu.svg" alt="Ford Logo" class="icon-menu" (click)="openMenu()"></div>
-    <div><h1 class="dashboard-title">Dashboard FORD</h1></div>
-    <button routerLink="/Login" class="btn-logout" (click)="executarLogout()"><img src="/img/icon-logout.svg" alt="Finalizar sessão"></button>
-</header>
-
 <main>
   <!-- 1. BLOCO SUPERIOR: Campo de Seleção e os 3 Cartões de Informação -->
 
