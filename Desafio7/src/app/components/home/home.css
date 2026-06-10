@@ -31,25 +31,29 @@
 }
 
 .side-bar {
-    display: none;
-    padding: 20px;
-    height: 100%;
-    width: 30%;
-    background-color: #ffff;
+  display: block;
+  padding: 20px;
+  height: 100%;
+  width: 30%;
+  background-color: #ffff;
+}
+
+.images {
+  display: flex;
+  justify-content: space-between;
+  gap: 11rem;
 }
 
 .side-bar p:hover {
-    cursor: pointer;
-    color: #102a43;
+  cursor: pointer;
+  color: #102a43;
 }
+
 
 .side-bar img {
   height: 40px;
   object-fit: contain;
 }
-
-/* Botão de Logout */
-
 
 /* Centralização do conteúdo */
 .home-content {
@@ -57,10 +61,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
 }
 
-/* Passo 4: O Cartão de boas-vindas */
 .welcome-card {
   background-color: rgba(255, 255, 255, 0.95);
   padding: 40px;

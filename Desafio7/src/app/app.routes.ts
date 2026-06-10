@@ -1,7 +1,9 @@
-import { Dashboard } from './components/dashboard/dashboard';
+
 import { Routes } from '@angular/router';
-import { Home } from './components/home/home';
 import { Login } from './components/login/login';
+import { Home } from './components/home/home';
+import { Cabecalho } from './components/cabecalho/cabecalho';
+import { Dashboard } from './components/dashboard/dashboard';
 
 
 

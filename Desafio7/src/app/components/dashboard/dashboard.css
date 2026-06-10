@@ -1,0 +1,189 @@
+.dashboard-wrapper {
+  padding: 30px;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.dashboard-title {
+  text-align: center;
+  color: #102a43;
+  margin-bottom: 30px;
+  font-weight: normal;
+}
+
+/* Alinhamento dos cards superiores em 4 colunas */
+.top-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Card do Select */
+.card-select label {
+  font-size: 13px;
+  color: #627d98;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.card-select select {
+  padding: 10px;
+  border: 1px solid #bcccdc;
+  border-radius: 6px;
+  outline: none;
+  background-color: #f0f4f8;
+  font-size: 15px;
+  color: #102a43;
+}
+
+/* Estilo dos Cards de dados */
+.data-card {
+  text-align: center;
+  border-left: 5px solid #bcccdc;
+}
+
+.border-blue { border-left-color: #199057; } /* Tom Ford */
+.border-green { border-left-color: #2b6cb0; }
+.border-cyan { border-left-color: #319795; }
+
+.card-label {
+  font-size: 13px;
+  color: #627d98;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.card-value {
+  margin: 10px 0 0 0;
+  font-size: 28px;
+  color: #102a43;
+}
+
+/* Seção da Imagem Central */
+.center-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.image-container {
+  border-radius: 12px;
+  text-align: center;
+  max-width: 320px;
+  width: 100%;
+}
+
+.vehicle-display-img {
+  max-height: 200px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.vehicle-display-name {
+  margin-top: 15px;
+  color: #486581;
+  font-size: 20px;
+}
+
+/* Seção Inferior: Tabela */
+.table-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.table-search-box {
+  margin-bottom: 20px;
+}
+
+.table-search-box input {
+  width: 310px;
+  max-width: 100%;
+  padding: 12px;
+  border: 1px solid #bcccdc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+.table-search-box input:focus {
+  border-color: #199057;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th {
+  background-color: #102a43;
+  color: #ffffff;
+  padding: 14px;
+  font-size: 14px;
+}
+
+td {
+  padding: 14px;
+  border-bottom: 15px solid #102a43;
+  font-size: 14px;
+  color: #334e68;
+}
+
+tr:hover td {
+  background-color: #f0f4f8;
+}
+
+.code-column {
+  font-family: monospace;
+  font-weight: bold;
+  color: #199057;
+}
+
+/* Badges de Status */
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-ativo { background-color: #e6fffa; color: #234e52; }
+.status-revisao { background-color: #fffaf0; color: #7b341e; }
+
+.no-data {
+  text-align: center;
+  color: #627d98;
+  padding: 30px;
+}
+
+/* Responsividade Básica */
+@media (max-width: 900px) {
+  .top-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .top-section {
+    grid-template-columns: 1fr;
+  }
+}

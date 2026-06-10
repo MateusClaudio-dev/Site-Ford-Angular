@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterLink } from "@angular/router";
-import { Cabecalho } from '../cabecalho/cabecalho';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  imports: [Cabecalho],
-  templateUrl: './home.html',
-  styleUrl: './home.css',
+  selector: 'app-cabecalho',
+  imports: [RouterLink],
+  templateUrl: './cabecalho.html',
+  styleUrl: './cabecalho.css',
 })
-export class Home {
+export class Cabecalho {
   executarLogout() {
     
   }
@@ -46,3 +45,5 @@ export class Home {
     })
   }
 }
+
+
