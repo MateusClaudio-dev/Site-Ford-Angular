@@ -27,25 +27,26 @@
         <option value="mustang">Ford Mustang</option>
         <option value="bronco">Ford Bronco Sport</option>
         <option value="territory">Ford Territory</option>
+        
       </select>
     </div>
 
     <!-- Cartão 2: Total de Vendas (Passo 9) -->
     <div class="card data-card border-blue">
       <span class="card-label">Total de Vendas</span>
-      <h2 class="card-value">1,500</h2> <!-- Dado fixo para teste -->
+      <h2 class="card-value">1.500</h2> <!-- Dado fixo para teste -->
     </div>
 
     <!-- Cartão 3: Veículos Conectados (Passo 9) -->
     <div class="card data-card border-green">
       <span class="card-label">Conectados à Ford</span>
-      <h2 class="card-value">500</h2> <!-- Dado fixo para teste -->
+      <h2 class="card-value">{{vehicles.connected}}</h2> <!-- Dado fixo para teste -->
     </div>
 
     <!-- Cartão 4: Software Atualizado (Passo 9) -->
     <div class="card data-card border-cyan">
       <span class="card-label">Software Atualizado</span>
-      <h2 class="card-value">350</h2> <!-- Dado fixo para teste -->
+      <h2 class="card-value">{{vehicles.softwareUpdates}}</h2> <!-- Dado fixo para teste -->
     </div>
     </section>
 
@@ -58,14 +59,6 @@
   </section>
   <section class="bottom-section">
     <div class="table-card">
-
-      <!--
-      <div class="table-search-box">
-        <label for="cod-vin">Codigo - Vin <br>
-          <input id="cod-vin" type="text" placeholder="Buscar codigo Vin">
-        </label>
-      </div>
-     -->
       <div class="table-container">
         <table>
 

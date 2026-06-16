@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Veiculo } from '../../models/veiculo.model';
 
 
 @Component({
@@ -8,7 +9,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
-export class Dashboard {
+export class Dashboard  {
     executarLogout() {
     
   }
@@ -32,6 +33,14 @@ export class Dashboard {
      dashboard.style.display = 'flex'
     sideBar.style.display = 'none'
     })
+  }
+
+  @Input() vehicles: Veiculo = {
+    id: 1,
+    vehicle: "Ranger",
+    volumetotal: 145760,
+    connected: 70000,
+    softwareUpdates: 27550,
   }
 }
 
