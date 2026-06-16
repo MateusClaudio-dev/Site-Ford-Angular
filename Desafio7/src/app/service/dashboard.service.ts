@@ -6,13 +6,11 @@ import { Injectable } from '@angular/core';
 })
 export class DashboardService {
 
-   //'http://localhost:3001/'
+  private  API_URL = "http://localhost:3001/vehicles"
+  constructor(private httpClient: HttpClient ) {}
 
-  private readonly API = 'http://localhost:3001'
-  constructor(private http: HttpClient ) {}
-
-  getVehicles() {
-    
+  obterCarros() {// ausencia de observables
+    return this.httpClient.get(this.API_URL);
   }
   
 }
