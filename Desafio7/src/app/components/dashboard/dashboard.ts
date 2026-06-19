@@ -1,7 +1,8 @@
 import { DashboardService } from './../../service/dashboard.service';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Veiculo } from '../../models/veiculo.model';
+import { Veiculo, VeiculosAPI } from '../../models/veiculo.model';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -38,24 +39,24 @@ export class Dashboard  {
     })
   }
 
-  carros: Veiculo [] = []
+  carros: Veiculo[] = []
 
   // BLOCO DO CONSUMO DE API 
   constructor(private DashboardService: DashboardService) {}
 
-  ngOnInit() {
-    this.DashboardService.obterCarros().subscribe((carros: Veiculo[]) => {
-      this.carros = carros;
+  ngOnInit(){
+    this.DashboardService.obterCarros().subscribe((resposta: VeiculosAPI) => {
+      this.carros = resposta.vehicles
       console.log(this.carros)
-    })
+    });
   }
 
   @Input() vehicles: Veiculo = {
-    id: 1,
-    vehicle: "Ranger",
-    volumetotal: 145760,
-    connected: 70000,
-    softwareUpdates: 27550,
+    id: '1',
+    vehicle: "Testando",
+    volumetotal: 1,
+    connected: 2,
+    softwareUpdates: 3,
   }
 }
 
