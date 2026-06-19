@@ -1,7 +1,6 @@
 import { Veiculo } from './../models/veiculo.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Version } from '@angular/core';
-import { Veiculo } from '../models/veiculo.model';
 import { map, Observable } from 'rxjs';
 
 @Injectable({

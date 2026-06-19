@@ -1,3 +1,4 @@
+import { DashboardService } from './../../service/dashboard.service';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Veiculo } from '../../models/veiculo.model';
@@ -9,6 +10,8 @@ import { Veiculo } from '../../models/veiculo.model';
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
+
+// LOGICA DO MENU HAMBURGER
 export class Dashboard  {
     executarLogout() {
     
@@ -32,6 +35,18 @@ export class Dashboard  {
     iconClose.addEventListener('click', function(){
      dashboard.style.display = 'flex'
     sideBar.style.display = 'none'
+    })
+  }
+
+  carros: Veiculo [] = []
+
+  // BLOCO DO CONSUMO DE API 
+  constructor(private DashboardService: DashboardService) {}
+
+  ngOnInit() {
+    this.DashboardService.obterCarros().subscribe((carros: Veiculo[]) => {
+      this.carros = carros;
+      console.log(this.carros)
     })
   }
 
