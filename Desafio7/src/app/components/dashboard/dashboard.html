@@ -13,47 +13,45 @@
       <p routerLink="/Dashboard">Dashboard</p>
     </div>
 <main>
+
   <!-- 1. BLOCO SUPERIOR: Campo de Seleção e os 3 Cartões de Informação -->
-
   <section class="top-section">
-    
-    <!-- Cartão 1: Seleção do Modelo (Passo 8) -->
-    <div class="card card-select">
-      <label for="modelSelect">Modelo do Veículo:</label>
-      <select id="modelSelect">
 
-        <!-- Opções fixas apenas para você ver o visual no navegador -->
-        <option value="ranger">{{vehicles.connected}}</option>
-        <option value="mustang">Ford Mustang</option>
-        <option value="bronco">Ford Bronco Sport</option>
-        <option value="territory">Ford Territory</option>
-        
-      </select>
+    <div class="card card-select">
+      <label>
+        <span>Modelo do veículo:</span>
+        <select id="modelSelect" *ngIf="carros && carros.length > 0" (change)="aoSelecionarCarro($event)">
+          <option value="">Selecionar modelo</option>
+
+            <option *ngFor="let carro of carros" [value]="carro.id">
+              {{carro.vehicle}}
+            </option>
+        </select>
+      </label>
+
+    
     </div>
 
-    <!-- Cartão 2: Total de Vendas (Passo 9) -->
     <div class="card data-card border-blue">
       <span class="card-label">Total de Vendas</span>
-      <h2 class="card-value">1.500</h2> <!-- Dado fixo para teste -->
+      <h2 class="card-value">{{carroSelecionado?.volumetotal}}</h2> 
     </div>
 
-    <!-- Cartão 3: Veículos Conectados (Passo 9) -->
     <div class="card data-card border-green">
       <span class="card-label">Conectados à Ford</span>
-      <h2 class="card-value">{{vehicles.connected}}</h2> <!-- Dado fixo para teste -->
+      <h2 class="card-value">{{carroSelecionado?.connected}}</h2> 
     </div>
 
-    <!-- Cartão 4: Software Atualizado (Passo 9) -->
     <div class="card data-card border-cyan">
       <span class="card-label">Software Atualizado</span>
-      <h2 class="card-value">{{vehicles.softwareUpdates}}</h2> <!-- Dado fixo para teste -->
+      <h2 class="card-value">{{carroSelecionado?.softwareUpdates}}</h2> 
     </div>
     </section>
 
     <!-- BLOCO CENTRAL: Imagem de carro -->
     <section class="center-section">
     <div class="image-container">
-      <img src="/img/ranger.png" alt="Veículo em Destaque" class="vehicle-display-img">
+      <img [src]="carroSelecionado?.img || '/img/ford.png'" alt="Veículo selecionado em destaque" class="vehicle-display-img">
       
     </div>
   </section>
@@ -76,14 +74,15 @@
           <tbody>
             <tr>
               <td>  
-                <div class="table-search-box"><input id="cod-vin" type="text" placeholder="Buscar codigo Vin"></div>
+                <div class="table-search-box">
+                  <input id="cod-vin" type="text" placeholder="Buscar codigo Vin" (input)="aoDigitarVin($event)">
+                </div>
               </td>
-              <td>50000km</td>
-              <td>90%</td>
-              <td>on</td>
-              <td>-1222242</td>
-              <td>-35222443</td>
-            </tr>
+              <td>{{ dadosTelemetria ? dadosTelemetria.odometro + ' Km' : '0 Km' }}</td>
+              <td>{{ dadosTelemetria ? dadosTelemetria.nivelCombustivel + '%' : '0%' }}</td>
+              <td>{{ dadosTelemetria?.status ?? 'Desconectado' }}</td>
+              <td>{{ dadosTelemetria?.lat ?? '0.0000' }}</td>
+              <td>{{ dadosTelemetria?.long ?? '0.0000' }}</td>
           </tbody>
 
         </table>
