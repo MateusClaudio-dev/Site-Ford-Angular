@@ -16,11 +16,10 @@ export class Cabecalho {
   constructor(private router: Router) {}
 
 
-
-  openMenu(): void { this.menuAberto = true } 
-  outMenu(): void { this.menuAberto = false }
-  closeMenu(): void { this.menuAberto = false }
-  executarLogout() {this.router.navigate(["/Login"])}
+  openMenu(): void { this.menuAberto = true };
+  outMenu(): void { this.menuAberto = false };
+  closeMenu(): void { this.menuAberto = false };
+  executarLogout(): void { localStorage.clear(); this.router.navigate(["/Login"]) }
 }
 
 

@@ -32,6 +32,7 @@ export class Login {
     this.authservice.efetuarLogin(this.dadosForm).subscribe({
       next: (respostaDoBack) => {
         console.log('Autenticado com sucesso', respostaDoBack);
+        localStorage.setItem('usuarioLogado', 'true');
         this.router.navigate(["/Home"]);
       },
       error:(erro) => {
