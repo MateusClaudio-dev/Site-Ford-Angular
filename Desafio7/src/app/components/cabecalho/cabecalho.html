@@ -1,21 +1,23 @@
-  <header class="home-header">    
+<header class="home-header" *ngIf="!menuAberto"> 
 
-    <div class="logo-area">
-      <img src="/img/icon-menu.svg" alt="Ford Logo" class="icon-menu" (click)="openMenu()">
-    </div>    
+  <div class="logo-area">
+    <img src="/img/icon-menu.svg" alt="Ford Logo" class="icon-menu" (click)="openMenu()">
+  </div>    
+  <div class="logout-area">
+    <button class="btn-logout" (click)="executarLogout()">
+      <img src="/img/icon-logout.svg" alt="Finalizar sessão">
+    </button>
+  </div>
 
-    <div class="logout-area">
-      <!-- Passo 5: Item de logout que chama a função de sair -->
-      <button routerLink="/Login" class="btn-logout" (click)="executarLogout()"><img src="/img/icon-logout.svg" alt="Finalizar sessão"></button>
-    </div>
-  </header>
+</header>
+
   <aside>
-      <div class="side-bar">
+      <div class="side-bar" *ngIf="menuAberto">
         <div class="images">
             <img src="/img/ford.png" alt="">
             <img src="/img/icon-close.svg" alt="Ford Logo" class="icon-menu" (click)="closeMenu()">
         </div>
-        <p class="back-home" (click)="outMenu()">Home</p>
+        <p class="back-home" routerLink="/Home">Home</p>
         <p routerLink="/Dashboard">Dashboard</p>
       </div>
   </aside>

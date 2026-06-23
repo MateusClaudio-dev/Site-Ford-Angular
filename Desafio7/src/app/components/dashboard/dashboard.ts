@@ -6,12 +6,13 @@ import { CommonModule } from '@angular/common';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { TelemetriaVeiculo } from '../../models/veiculo.model';
+import { Cabecalho } from "../cabecalho/cabecalho";
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [ CommonModule, Cabecalho],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
@@ -68,27 +69,27 @@ export class Dashboard implements OnInit {
   }
 
 // BLOCO DA LOGICA DO MENU HAMBURGUER
-  executarLogout() {
-    console.log('Sessão finalizada.');
-  }
-
-  openMenu(): void {
-    const dashboard = document.querySelector('.cabecalho-dashboard') as HTMLElement;
-    const sideBar = document.querySelector('.side-bar') as HTMLElement;
-    
-    if (dashboard && sideBar) {
-      dashboard.style.display = 'none';
-      sideBar.style.display = 'block';
-    }
-  }
-
-  closeMenu(): void {
-    const dashboard = document.querySelector('.cabecalho-dashboard') as HTMLElement;
-    const sideBar = document.querySelector('.side-bar') as HTMLElement;
-    
-    if (dashboard && sideBar) {
-      dashboard.style.display = 'flex';
-      sideBar.style.display = 'none';
-    }
-  }
-}
+//
+ // executarLogout(){}
+//
+ // openMenu(): void {
+ //   const dashboard = document.querySelector('.cabecalho-dashboard') as HTMLElement;
+ //   const sideBar = document.querySelector('.side-bar') as HTMLElement;
+ //   
+ //   if (dashboard && sideBar) {
+ //     dashboard.style.display = 'none';
+ //     sideBar.style.display = 'block';
+ //   }
+ // }
+//
+ // closeMenu(): void {
+ //   const dashboard = document.querySelector('.cabecalho-dashboard') as HTMLElement;
+ //   const sideBar = document.querySelector('.side-bar') as HTMLElement;
+ //   
+ //   if (dashboard && sideBar) {
+ //     dashboard.style.display = 'flex';
+ //     sideBar.style.display = 'none';
+ //   }
+ // }
+}//
+//
