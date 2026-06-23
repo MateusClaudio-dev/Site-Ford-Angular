@@ -8,7 +8,7 @@
 }
 
 .icon-menu {
-  height: 25px;
+  height: 2.5rem;
   object-fit: contain;
 }
 
@@ -45,4 +45,10 @@
 .side-bar img {
   height: 40px;
   object-fit: contain;
+}
+
+@media (max-width: 700px) {
+  .side-bar {
+    width: 50%;
+  }
 }

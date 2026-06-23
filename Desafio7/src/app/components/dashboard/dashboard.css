@@ -24,6 +24,7 @@ main {
 
 /* Card do Select */
 .card-select label {
+  display: block;
   font-size: 13px;
   color: #627d98;
   font-weight: bold;
@@ -31,6 +32,7 @@ main {
 }
 
 .card-select select {
+  display: block;
   padding: 10px;
   border: 1px solid #bcccdc;
   border-radius: 6px;
@@ -176,5 +178,63 @@ tr:hover td {
 @media (max-width: 600px) {
   .top-section {
     grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /*RESPONSIVIDADE TABELA */
+.table-container {
+    overflow-x: visible;
+  }
+  
+  table, thead, tbody, th, td, tr {
+    display: block;
+    width: 100%;
+  }
+
+  /* 2. Esconde o cabeçalho original do topo para ele não se empilhar solto */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  /* 3. Transforma cada linha da tabela em um "card" com espaçamento */
+  tr {
+    background: #ffffff;
+    border: 1px solid #bcccdc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+
+  /* 4. Estiliza as células de dados */
+  td {
+    border-bottom: 1px solid #f0f4f8 !important; /* Limpa a borda grossa antiga */
+    position: relative;
+    padding: 12px 10px 12px 10px;
+    display: flex;
+    flex-direction: column; /* Força o valor a ir para BAIXO do título */
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  td:last-child {
+    border-bottom: none !important;
+  }
+
+  /* 5. A MÁGICA: Injeta o título azul escuro LOGO ACIMA do valor */
+  td::before {
+    content: attr(data-label); /* Puxa o texto lá do HTML */
+    font-size: 13px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #102a43; /* O tom azul escuro da FORD */
+    padding: 7px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
   }
 }

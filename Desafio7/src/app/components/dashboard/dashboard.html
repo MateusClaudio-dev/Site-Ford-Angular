@@ -60,16 +60,16 @@
 
           <tbody>
             <tr>
-              <td>  
+              <td data-label="Codigo Vin">  
                 <div class="table-search-box">
                   <input id="cod-vin" type="text" placeholder="Buscar codigo Vin" (input)="aoDigitarVin($event)">
                 </div>
               </td>
-              <td>{{ dadosTelemetria ? dadosTelemetria.odometro + ' Km' : '0 Km' }}</td>
-              <td>{{ dadosTelemetria ? dadosTelemetria.nivelCombustivel + '%' : '0%' }}</td>
-              <td>{{ dadosTelemetria?.status ?? 'Desconectado' }}</td>
-              <td>{{ dadosTelemetria?.lat ?? '0.0000' }}</td>
-              <td>{{ dadosTelemetria?.long ?? '0.0000' }}</td>
+              <td data-label="Odômetro">{{ dadosTelemetria ? dadosTelemetria.odometro + ' Km' : '0 Km' }}</td>
+              <td data-label="Nível de combustivel">{{ dadosTelemetria ? dadosTelemetria.nivelCombustivel + '%' : '0%' }}</td>
+              <td data-label="Status">{{ dadosTelemetria?.status ?? 'Desconectado' }}</td>
+              <td data-label="Lat.">{{ dadosTelemetria?.lat ?? '0.0000' }}</td>
+              <td data-label="Long.">{{ dadosTelemetria?.long ?? '0.0000' }}</td>
           </tbody>
 
         </table>
