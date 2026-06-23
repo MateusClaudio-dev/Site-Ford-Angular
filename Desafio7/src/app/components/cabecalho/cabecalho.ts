@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cabecalho',
@@ -8,8 +8,10 @@ import { RouterLink } from '@angular/router';
   styleUrl: './cabecalho.css',
 })
 export class Cabecalho {
+
+  constructor(private router: Router) {}
   executarLogout() {
-    
+    this.router.navigate(["/Login"])
   }
 
   openMenu(): void {
