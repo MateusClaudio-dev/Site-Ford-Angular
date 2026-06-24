@@ -9,7 +9,7 @@
   
   /* Passo 6: Imagem de fundo configurada via CSS */
 
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('/img/ranger.png');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('img/ranger.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
