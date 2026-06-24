@@ -1,8 +1,6 @@
-
 import { Routes } from '@angular/router';
 import { Login } from './components/login/login';
 import { Home } from './components/home/home';
-import { Cabecalho } from './components/cabecalho/cabecalho';
 import { Dashboard } from './components/dashboard/dashboard';
 import { authGuard } from './guards/auth-guard';
 
@@ -11,11 +9,11 @@ import { authGuard } from './guards/auth-guard';
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'Login',
+        redirectTo: 'login',
         pathMatch: 'full'
     },
 
-    { path: 'Login',    component: Login },
-    { path: 'Home',     component: Home, canActivate: [authGuard] },
-    { path: 'Dashboard',component: Dashboard, canActivate: [authGuard] }
+    { path: 'login',    component: Login },
+    { path: 'home',     component: Home, canActivate: [authGuard] },
+    { path: 'dashboard',component: Dashboard, canActivate: [authGuard] }
 ];

@@ -67,29 +67,4 @@ export class Dashboard implements OnInit {
       this.buscadorVin$.next(inputElement.value);
     }
   }
-
-// BLOCO DA LOGICA DO MENU HAMBURGUER
-//
- // executarLogout(){}
-//
- // openMenu(): void {
- //   const dashboard = document.querySelector('.cabecalho-dashboard') as HTMLElement;
- //   const sideBar = document.querySelector('.side-bar') as HTMLElement;
- //   
- //   if (dashboard && sideBar) {
- //     dashboard.style.display = 'none';
- //     sideBar.style.display = 'block';
- //   }
- // }
-//
- // closeMenu(): void {
- //   const dashboard = document.querySelector('.cabecalho-dashboard') as HTMLElement;
- //   const sideBar = document.querySelector('.side-bar') as HTMLElement;
- //   
- //   if (dashboard && sideBar) {
- //     dashboard.style.display = 'flex';
- //     sideBar.style.display = 'none';
- //   }
- // }
-}//
-//
+}

@@ -28,7 +28,7 @@ export class Login {
   ngOnInit(): void {
     const usuarioLogado = localStorage.getItem('usuarioLogado');
     if (usuarioLogado === 'true') {
-      this.router.navigate((['/Home']))
+      this.router.navigate((['/home']))
      }
   }
 
@@ -41,7 +41,7 @@ export class Login {
       next: (respostaDoBack) => {
         console.log('Autenticado com sucesso', respostaDoBack);
         localStorage.setItem('usuarioLogado', 'true');
-        this.router.navigate(["/Home"]);
+        this.router.navigate(["/home"]);
       },
       error:(erro) => {
         console.error('Erro no login:', erro);
