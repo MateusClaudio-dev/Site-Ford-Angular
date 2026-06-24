@@ -1,3 +1,4 @@
+import { Usuario } from './../../models/usuario.model';
 import { Home } from './../home/home';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
@@ -22,6 +23,13 @@ export class Login {
   dadosForm = {
     nome: "",
     senha: ""
+  }
+
+  ngOnInit(): void {
+    const usuarioLogado = localStorage.getItem('usuarioLogado');
+    if (usuarioLogado === 'true') {
+      this.router.navigate((['/Home']))
+     }
   }
 
   aoSubmeterLogin(): void {
