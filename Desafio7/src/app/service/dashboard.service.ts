@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class DashboardService {
 
-  private  API_URL = "http://localhost:3001/vehicles"
-  private  DATA_URL = "http://localhost:3001/vehicleData"
+  private API_URL = "https://api-ford-2ecp.onrender.com/vehicles";
+  private DATA_URL = "https://api-ford-2ecp.onrender.com/vehicleData";
   constructor(private httpClient: HttpClient ) {}
 
   obterCarros(): Observable<VeiculosAPI> {
