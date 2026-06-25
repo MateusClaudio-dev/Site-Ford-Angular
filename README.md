@@ -42,8 +42,21 @@ O controle de concorrência e o gerenciamento de chamadas assíncronas assenta-s
 **Event Binding (()):** Captura e processamento reativo de ações do usuário (submissão de formulários de autenticação, filtros analíticos e encerramento de sessão).
 
 **Diretivas Estruturais e de Controle:** Emprego de [(ngModel)] para persistência bidirecional em inputs, *ngIf para manipulação cirúrgica da árvore DOM e *ngFor para renderização de tabelas analíticas a partir do payload JSON da API.
-## 📁 Arquitetura do Repositório (Monorepo Pattern)
 
+--- 
+
+<img width="944" height="411" alt="image" src="https://github.com/user-attachments/assets/0d650ab3-ac47-4bfa-a232-57be7843bc52" />
+<br></br>
+
+<img width="191" height="347" alt="image" src="https://github.com/user-attachments/assets/77d6b58e-e61b-4a78-9fef-591a2aeeea3a" />
+
+
+<img width="193" height="339" alt="image" src="https://github.com/user-attachments/assets/c09bf109-d08f-4c08-9f1c-52d41f9afcf5" />
+
+<img width="197" height="350" alt="image" src="https://github.com/user-attachments/assets/7c8bd856-1d5d-46d6-97fa-d12d1b752ae5" />
+
+--- 
+## 📁 Arquitetura do Repositório (Monorepo Pattern)
 A estrutura adota o padrão monorepo para garantir a coesão das entregas e centralização do pipeline de versionamento:
 
 ```text
