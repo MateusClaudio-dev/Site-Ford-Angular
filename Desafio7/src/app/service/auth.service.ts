@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private API_URL = "http://localhost:3001/login";
+  private API_URL = "https://api-ford-2ecp.onrender.com/login";
 
   constructor(private http: HttpClient) {}
 
