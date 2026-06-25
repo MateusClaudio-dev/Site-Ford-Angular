@@ -19,7 +19,12 @@ export class Cabecalho {
   openMenu(): void { this.menuAberto = true };
   outMenu(): void { this.menuAberto = false };
   closeMenu(): void { this.menuAberto = false };
-  executarLogout(): void { localStorage.clear(); this.router.navigate(["/login"]) }
+  executarLogout(): void 
+  {
+    localStorage.clear();
+    sessionStorage.clear();
+    this.router.navigate(["/login"]) 
+  }
 }
 
 

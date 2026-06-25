@@ -15,19 +15,25 @@ import { AuthService } from '../../service/auth.service';
 })
 export class Login {
 
-  constructor(
-    private authservice: AuthService,
-    private router: Router
-  ) {}
+  lembrarMe: boolean = false
 
   dadosForm = {
     nome: "",
     senha: ""
   }
 
+  constructor(
+    private authservice: AuthService,
+    private router: Router
+  ) {}
+
+
+
   ngOnInit(): void {
-    const usuarioLogado = localStorage.getItem('usuarioLogado');
-    if (usuarioLogado === 'true') {
+    const usuarioLocalStorage = localStorage.getItem('usuarioLogado');
+    const usuarioSessionStorage = sessionStorage.getItem('usuarioLogado')
+
+    if (usuarioLocalStorage === 'true' || usuarioSessionStorage === 'true') {
       this.router.navigate((['/home']))
      }
   }
@@ -40,7 +46,13 @@ export class Login {
     this.authservice.efetuarLogin(this.dadosForm).subscribe({
       next: (respostaDoBack) => {
         console.log('Autenticado com sucesso', respostaDoBack);
-        localStorage.setItem('usuarioLogado', 'true');
+
+        if (this.lembrarMe) {
+          localStorage.setItem('usuarioLogado', 'true');
+        } else {
+          sessionStorage.setItem('usuarioLogado', 'true');
+        }
+        
         this.router.navigate(["/home"]);
       },
       error:(erro) => {
