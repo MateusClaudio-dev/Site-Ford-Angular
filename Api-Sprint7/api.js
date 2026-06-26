@@ -43,7 +43,7 @@ app.post("/login", async (req, res) => {
 
 app.get("/vehicles", (req, res) => {
     try {
-        const baseURL = `${req.protocol}://${req.get('host')}`;
+        const baseURL = `https://${req.get('host')}`;
         const vehicles = [
             {
                 id: 1,
