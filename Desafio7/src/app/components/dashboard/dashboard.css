@@ -1,60 +1,9 @@
-.cabecalho-dashboard {
-  padding: 0 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
 
-.side-bar {
-  margin-top: 0;
-  z-index: 10;
-  position: absolute;
-  display: none;
-  padding: 20px;
-  height: 80.2%;
-  width: 30%;
-  background-color: #fff;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-.btn-logout {
-  height: 35px;
-  scale: 0.7;
-}
-
-.images {
-  display: flex;
-  justify-content: space-between;
-  gap: 11rem;
-}
-
-.side-bar p:hover {
-  cursor: pointer;
-  color: #102a43;
-}
-
-
-.side-bar img {
-  height: 40px;
-  object-fit: contain;
-}
-
-.dashboard-wrapper {
-  padding: 30px;
-  background-color: #f5f7fa;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  box-sizing: border-box;
-}
-
-.dashboard-title {
-  margin-top: 0;
-  color: #102a43;
-  margin-bottom: 30px;
-  font-weight: normal;
-}
 
 /* Alinhamento dos cards superiores em 4 colunas */
+main {
+  margin-top: 30px;
+}
 .top-section {
   position: relative;
   display: grid;
@@ -75,6 +24,7 @@
 
 /* Card do Select */
 .card-select label {
+  display: block;
   font-size: 13px;
   color: #627d98;
   font-weight: bold;
@@ -82,6 +32,7 @@
 }
 
 .card-select select {
+  display: block;
   padding: 10px;
   border: 1px solid #bcccdc;
   border-radius: 6px;
@@ -227,5 +178,63 @@ tr:hover td {
 @media (max-width: 600px) {
   .top-section {
     grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /*RESPONSIVIDADE TABELA */
+.table-container {
+    overflow-x: visible;
+  }
+  
+  table, thead, tbody, th, td, tr {
+    display: block;
+    width: 100%;
+  }
+
+  /* 2. Esconde o cabeçalho original do topo para ele não se empilhar solto */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  /* 3. Transforma cada linha da tabela em um "card" com espaçamento */
+  tr {
+    background: #ffffff;
+    border: 1px solid #bcccdc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+
+  /* 4. Estiliza as células de dados */
+  td {
+    border-bottom: 1px solid #f0f4f8 !important; /* Limpa a borda grossa antiga */
+    position: relative;
+    padding: 12px 10px 12px 10px;
+    display: flex;
+    flex-direction: column; /* Força o valor a ir para BAIXO do título */
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  td:last-child {
+    border-bottom: none !important;
+  }
+
+  /* 5. A MÁGICA: Injeta o título azul escuro LOGO ACIMA do valor */
+  td::before {
+    content: attr(data-label); /* Puxa o texto lá do HTML */
+    font-size: 13px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #102a43; /* O tom azul escuro da FORD */
+    padding: 7px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
   }
 }

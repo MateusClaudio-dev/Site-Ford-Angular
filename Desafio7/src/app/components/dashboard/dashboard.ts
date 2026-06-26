@@ -1,37 +1,70 @@
-import { Component } from '@angular/core';
+import { DashboardService } from './../../service/dashboard.service';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Veiculo, VeiculosAPI } from '../../models/veiculo.model';
+import { CommonModule } from '@angular/common';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
+import { TelemetriaVeiculo } from '../../models/veiculo.model';
+import { Cabecalho } from "../cabecalho/cabecalho";
 
 
 @Component({
   selector: 'app-dashboard',
-  imports: [RouterLink],
+  standalone: true,
+  imports: [ CommonModule, Cabecalho],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
-export class Dashboard {
-    executarLogout() {
-    
+
+export class Dashboard implements OnInit {
+
+  carros: Veiculo[] = []
+  carroSelecionado: Veiculo | null = null
+  dadosTelemetria: TelemetriaVeiculo | null = null
+
+  private buscadorVin$ = new Subject<string>();
+
+  // BLOCO DO CONSUMO DE API 
+  constructor(
+    private DashboardService: DashboardService,
+    private cdr: ChangeDetectorRef
+  ) {}
+
+  ngOnInit(){
+
+    // LÓGICA DO RETORNO DOS DADOS DA API
+    this.DashboardService.obterCarros().subscribe((resposta: VeiculosAPI) => {
+      this.carros = resposta.vehicles;
+      console.log(this.carros);
+      this.cdr.detectChanges();
+    });
+
+    // LÓGICA DO CAMPO DE BUSCA (VIN)
+    this.buscadorVin$.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      switchMap((textoDoinput) => {
+        return this.DashboardService.obterDadosPorVin(textoDoinput)
+      })
+    ).subscribe((resultadoDaAPI) => {
+      this.dadosTelemetria = resultadoDaAPI;
+      this.cdr.detectChanges();
+    })
   }
 
-  openMenu(): void {
-    const dashboard = document.querySelector('.cabecalho-dashboard') as HTMLElement
-    const iconMenu = document.querySelector('.icon-menu') as HTMLElement
-    const sideBar = document.querySelector('.side-bar') as HTMLElement
-    iconMenu.addEventListener('click', function(){
-    dashboard.style.display = 'none'
-    sideBar.style.display = 'block'
-    })
+  aoSelecionarCarro(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement; // 'target' aponta diretamente para o elemento que disparou o click
+    const idSelecionado = Number(selectElement.value);
 
+      this.carroSelecionado =  this.carros.find(carro => carro.id == idSelecionado) || null;
+      console.log(idSelecionado)
   }
 
-  closeMenu(): void {
-    const dashboard = document.querySelector('.cabecalho-dashboard') as HTMLElement
-    const iconClose = document.querySelector('.icon-close') as HTMLElement
-    const sideBar = document.querySelector('.side-bar') as HTMLElement
-    iconClose.addEventListener('click', function(){
-     dashboard.style.display = 'flex'
-    sideBar.style.display = 'none'
-    })
+  aoDigitarVin(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement) {
+      this.buscadorVin$.next(inputElement.value);
+    }
   }
 }
-

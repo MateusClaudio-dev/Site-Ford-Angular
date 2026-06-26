@@ -43,6 +43,7 @@ app.post("/login", async (req, res) => {
 
 app.get("/vehicles", (req, res) => {
     try {
+        const baseURL = `${req.protocol}://${req.get('host')}`;
         const vehicles = [
             {
                 id: 1,
@@ -50,7 +51,7 @@ app.get("/vehicles", (req, res) => {
                 volumetotal: 145760,
                 connected: 70000,
                 softwareUpdates: 27550,
-                img: "http://localhost:3001/img/ranger.png"
+                img: `${baseURL}/img/ranger.png`
             },
             {
                 id: 2,
@@ -58,7 +59,7 @@ app.get("/vehicles", (req, res) => {
                 volumetotal: 1500,
                 connected: 500,
                 softwareUpdates: 750,
-                img: "http://localhost:3001/img/mustang.png"
+                img: `${baseURL}/img/mustang.png`
             },
             {
                 id: 3,
@@ -66,7 +67,7 @@ app.get("/vehicles", (req, res) => {
                 volumetotal: 4560,
                 connected: 4000,
                 softwareUpdates: 3050,
-                img: "http://localhost:3001/img/territory.png"
+                img: `${baseURL}/img/territory.png`
             },
             {
                 id: 4,
@@ -74,7 +75,7 @@ app.get("/vehicles", (req, res) => {
                 volumetotal: 7560,
                 connected: 4060,
                 softwareUpdates: 2050,
-                img: "http://localhost:3001/img/broncoSport.png"
+                img: `${baseURL}/img/broncoSport.png`
             }
         ];
 
@@ -166,6 +167,7 @@ app.post("/vehicleData", (req, res) => {
     }
 })
 
-app.listen(3001, () => {
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
     console.log("API running on http://localhost:3001/");
 });

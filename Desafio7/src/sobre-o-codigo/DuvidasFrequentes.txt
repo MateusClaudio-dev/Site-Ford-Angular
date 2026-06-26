@@ -1,0 +1,13 @@
+O .target() Aponta diretamente para o elemento que disparou o click 
+
+O .find() É um método nativo do JavaScript usado exclusivamente para procurar elementos dentro de um Array.
+
+Em <section class="top-section">
+Uso das diretiva @for e track para verificar o id de cada carro no array no TypeScript
+
+Uso do Property Binding {{carroSelecionado?.softwareUpdates}} "?" => Protege o seu código contra erros de "valor nulo" 
+
+Uso de Property Binding [src] => significa que o caminho da imagem não é um texto fixo. vem do (dashboard.ts) para calcular o valor dinamicamente."
+
+O .cdr (ChangeDetectorRef) é uma ferramenta do Angular usada para gerenciar manualmente a atualização da tela.
+Uso do this.cdr.detectChanges() => Notifica o Angular que novos dados chegaram (geralmente dentro de funções assíncronas, como um .subscribe()) e força o framework a atualizar o HTML imediatamente com os novos valores, evitando que a tela fique desatualizada mesmo com os dados já carregados no TypeScript.

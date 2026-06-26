@@ -1,71 +1,49 @@
-
-<header class="cabecalho-dashboard">
-    <div><img src="/img/icon-menu.svg" alt="Ford Logo" class="icon-menu" (click)="openMenu()"></div>
-    <div><h1 class="dashboard-title">Dashboard FORD</h1></div>
-    <button routerLink="/Login" class="btn-logout" (click)="executarLogout()"><img src="/img/icon-logout.svg" alt="Finalizar sessão"></button>
-</header>
-<div class="side-bar">
-      <div class="images">
-          <img src="/img/ford.png" alt="">
-          <img src="/img/icon-close.svg" alt="Ford Logo" class="icon-close" (click)="closeMenu()">
-      </div>
-      <p routerLink="/Home" class="back-home">Home</p>
-      <p routerLink="/Dashboard">Dashboard</p>
-    </div>
+<app-cabecalho></app-cabecalho>
 <main>
+
   <!-- 1. BLOCO SUPERIOR: Campo de Seleção e os 3 Cartões de Informação -->
-
   <section class="top-section">
-    
-    <!-- Cartão 1: Seleção do Modelo (Passo 8) -->
-    <div class="card card-select">
-      <label for="modelSelect">Modelo do Veículo:</label>
-      <select id="modelSelect">
 
-        <!-- Opções fixas apenas para você ver o visual no navegador -->
-        <option value="ranger">Ford Ranger</option>
-        <option value="mustang">Ford Mustang</option>
-        <option value="bronco">Ford Bronco Sport</option>
-        <option value="territory">Ford Territory</option>
-      </select>
+    <div class="card card-select">
+      <label>
+        <span>Modelo do veículo:</span>
+        <select id="modelSelect" *ngIf="carros && carros.length > 0" (change)="aoSelecionarCarro($event)">
+          <option value="">Selecionar modelo</option>
+
+            <option *ngFor="let carro of carros" [value]="carro.id">
+              {{carro.vehicle}}
+            </option>
+        </select>
+      </label>
+
+    
     </div>
 
-    <!-- Cartão 2: Total de Vendas (Passo 9) -->
     <div class="card data-card border-blue">
       <span class="card-label">Total de Vendas</span>
-      <h2 class="card-value">1,500</h2> <!-- Dado fixo para teste -->
+      <h2 class="card-value">{{carroSelecionado?.volumetotal}}</h2> 
     </div>
 
-    <!-- Cartão 3: Veículos Conectados (Passo 9) -->
     <div class="card data-card border-green">
       <span class="card-label">Conectados à Ford</span>
-      <h2 class="card-value">500</h2> <!-- Dado fixo para teste -->
+      <h2 class="card-value">{{carroSelecionado?.connected}}</h2> 
     </div>
 
-    <!-- Cartão 4: Software Atualizado (Passo 9) -->
     <div class="card data-card border-cyan">
       <span class="card-label">Software Atualizado</span>
-      <h2 class="card-value">350</h2> <!-- Dado fixo para teste -->
+      <h2 class="card-value">{{carroSelecionado?.softwareUpdates}}</h2> 
     </div>
     </section>
 
     <!-- BLOCO CENTRAL: Imagem de carro -->
     <section class="center-section">
     <div class="image-container">
-      <img src="/img/ranger.png" alt="Veículo em Destaque" class="vehicle-display-img">
+      <img [src]="carroSelecionado?.img || 'img/ford.png'" alt="Veículo selecionado em destaque" class="vehicle-display-img">
       
     </div>
   </section>
   <section class="bottom-section">
     <div class="table-card">
-
-      <!--
-      <div class="table-search-box">
-        <label for="cod-vin">Codigo - Vin <br>
-          <input id="cod-vin" type="text" placeholder="Buscar codigo Vin">
-        </label>
-      </div>
-     -->
       <div class="table-container">
         <table>
 
@@ -82,15 +60,16 @@
 
           <tbody>
             <tr>
-              <td>  
-                <div class="table-search-box"><input id="cod-vin" type="text" placeholder="Buscar codigo Vin"></div>
+              <td data-label="Codigo Vin">  
+                <div class="table-search-box">
+                  <input id="cod-vin" type="text" placeholder="Buscar codigo Vin" (input)="aoDigitarVin($event)">
+                </div>
               </td>
-              <td>50000km</td>
-              <td>90%</td>
-              <td>on</td>
-              <td>-1222242</td>
-              <td>-35222443</td>
-            </tr>
+              <td data-label="Odômetro">{{ dadosTelemetria ? dadosTelemetria.odometro + ' Km' : '0 Km' }}</td>
+              <td data-label="Nível de combustivel">{{ dadosTelemetria ? dadosTelemetria.nivelCombustivel + '%' : '0%' }}</td>
+              <td data-label="Status">{{ dadosTelemetria?.status ?? 'Desconectado' }}</td>
+              <td data-label="Lat.">{{ dadosTelemetria?.lat ?? '0.0000' }}</td>
+              <td data-label="Long.">{{ dadosTelemetria?.long ?? '0.0000' }}</td>
           </tbody>
 
         </table>
