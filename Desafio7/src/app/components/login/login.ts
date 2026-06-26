@@ -34,7 +34,7 @@ export class Login {
     const usuarioSessionStorage = sessionStorage.getItem('usuarioLogado')
 
     if (usuarioLocalStorage === 'true' || usuarioSessionStorage === 'true') {
-      this.router.navigate((['/home']))
+      this.router.navigate(['/'])
      }
   }
 
@@ -53,7 +53,7 @@ export class Login {
           sessionStorage.setItem('usuarioLogado', 'true');
         }
         
-        this.router.navigate(["/home"]);
+        this.router.navigate(['/']);
       },
       error:(erro) => {
         console.error('Erro no login:', erro);
