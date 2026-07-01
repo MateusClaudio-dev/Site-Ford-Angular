@@ -8,6 +8,7 @@
 }
 
 .icon-menu {
+  cursor: pointer;
   height: 2.5rem;
   object-fit: contain;
 }
